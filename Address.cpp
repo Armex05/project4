@@ -4,6 +4,11 @@ Address::Address(string country, string city, string street) {
     this->country = country;
     this->street = street;
 }
+Address::Address() {
+    this->city = "Tehran";
+    this->street = "valiAsr";
+    this->country = "Iran";
+}
 ostream& operator <<(ostream& strm,Address& address){
     strm << "the address is: " << address.country << ", " << address.city << ", " << address.street;
     return strm;

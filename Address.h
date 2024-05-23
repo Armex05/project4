@@ -10,6 +10,7 @@ private:
     string street;
 public:
     Address(string country,string city,string street);
+    Address();
     friend ostream& operator <<(ostream&,Address&);
     friend istream& operator >>(istream&,Address&);
     void get();
