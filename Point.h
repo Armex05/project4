@@ -8,14 +8,15 @@ protected:
     int x;
 public:
     Point(int x=0, int y=0): x(x), y(y){}
-    Point(Point& p): x(p.x), y(p.y){}
-    friend Point operator +(Point,Point);
-    friend Point operator -(Point, Point);
+    Point(const Point& p): x(p.x), y(p.y){}
+    Point operator +(const Point&);
+    Point operator -(const Point&);
     Point operator /=(int);
-    bool operator=(Point);
-    void operator >=(Point);
+    Point& operator=(const Point&);
+    bool operator >=(const Point&);
+    bool operator ==(const Point&);
     void set();
-    void get();
+    void get() const;
 
 };
 

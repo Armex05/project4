@@ -1,48 +1,43 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 #include "Point.h"
 
-Point operator+(Point p1,Point p2){
-    Point temp;
-    temp.x = p1.x + p2.x;
-    temp.y = p1.y + p2.y;
-    return temp;
+Point Point::operator+(const Point& p){
+    return Point(x + p.x, y + p.y);
 }
-Point operator-(Point p1, Point p2){
-    Point temp;
-    temp.x = p1.x - p2.x;
-    temp.y = p1.y - p2.y;
+Point Point::operator-(const Point& p){
+    return Point(x - p.x, y - p.y);
 }
 Point Point::operator/=(int a) {
     if (x != 0){
         x /= a;
         y /= a;
-    }
-}
-bool Point::operator=(Point p1) {
-    bool a;
-    int dis = x*x + y*y;
-    int argDis = (p1.x)*(p1.x) + (p1.y)*(p1.y);
-    if (dis == argDis){
-        a = true;
     } else{
-        a = false;
+        cout <<"can not divide by 0\n";
     }
-    return a;
+    return *this;
 }
-void Point::operator >=(Point p1) {
-    int dis = x * x + y * y;
-    int argDis = (p1.x) * (p1.x) + (p1.y) * (p1.y);
-    if (dis >= argDis) {
-        cout << "the object is greater or equal than the given arg\n";
-    } else {
-        cout << "the object is not greater or equal than the given arg\n";
-    }
+Point& Point::operator=(const Point& p){
+    x = p.x;
+    y = p.y;
+    return *this;
+}
+
+
+bool Point::operator >=(const Point& p) {
+    return (sqrt(x*x + y*y) >= sqrt(p.x*p.x + p.y*p.y));
 }
 void Point::set(){
     cout << "please enter x and y coordinates: \n";
     cin >> x >> y ;
 }
-void Point::get() {
+void Point::get() const{
     cout << "the point has the x= " << x << " and the y= " << y << " coordinates\n";
+}
+bool Point::operator==(const Point& p) {
+    if ((x == p.x) && (y==p.y)){
+        return true;
+    }
+    return false;
 }
